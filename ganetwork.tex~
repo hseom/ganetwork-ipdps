@@ -231,7 +231,7 @@ In this section, we demonstrate the problem of free riders. Figure \ref{fig:nocp
 for given message ignore probability without any punishment on free riders. In contrast with
 CPU and disk cost which are internally related to its own characteristics, p\_ignore, hit rate is
 external factor affected by response of neighbors. Actually, in figure \ref{fig:nocpucost} and \ref{fig:nodiskcost}, 
-it can show that CPU and disk cost decrease, as message ignore probability, \emph{p\_ignore}, increases. Because
+it can show that CPU and disk cost decrease, as message ignore probability, $p\_ignore$, increases. Because
 the nodes which have high message ignore probability process fewer cache and query
 messages, they have smaller CPU and disk cost than low ignore probability nodes. However, in
 figure \ref{fig:nohitrate}, it is shown that the distribution of hit rate is unrelated to message ignore

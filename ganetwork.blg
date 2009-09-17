@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99c (Web2C 7.5.6)
+The top-level auxiliary file: ganetwork.aux
+The style file: IEEEtran.bst
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Database file #1: genetic.bib
+-- IEEEtran.bst version 1.13 (2008/09/30) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+
+Done.
+You've used 8 entries,
+            4039 wiz_defined-function locations,
+            835 strings with 7865 characters,
+and the built_in function-call counts, 3081 in all, are:
+= -- 217
+> -- 52
+< -- 6
++ -- 27
+- -- 11
+* -- 148
+:= -- 532
+add.period$ -- 16
+call.type$ -- 8
+change.case$ -- 8
+chr.to.int$ -- 0
+cite$ -- 8
+duplicate$ -- 271
+empty$ -- 293
+format.name$ -- 14
+if$ -- 649
+int.to.chr$ -- 0
+int.to.str$ -- 8
+missing$ -- 59
+newline$ -- 57
+num.names$ -- 3
+pop$ -- 180
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 228
+stack$ -- 0
+substring$ -- 8
+swap$ -- 152
+text.length$ -- 6
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 8
+warning$ -- 0
+while$ -- 3
+width$ -- 9
+write$ -- 92

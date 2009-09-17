@@ -25,6 +25,26 @@
   volume =  "7",
 }
 
+@InProceedings{Cooper05,
+  title =   "Quickly Routing Searches Without Having to Move
+         Content",
+  author =  "Brian F. Cooper",
+  bibdate = "2005-11-11",
+  bibsource =   "DBLP,
+         http://dblp.uni-trier.de/db/conf/iptps/iptps2005.html#Cooper05",
+  booktitle =   "Peer-to-Peer Systems {IV}, 4th International Workshop,
+         {IPTPS} 2005, Ithaca, {NY}, {USA}, February 24-25,
+         2005, Revised Selected Papers",
+  publisher =   "Springer",
+  year =    "2005",
+  volume =  "3640",
+  editor =  "Miguel Castro and Robbert van Renesse",
+  ISBN =    "3-540-29068-0",
+  pages =   "163--172",
+  series =  "Lecture Notes in Computer Science",
+  URL =     "http://dx.doi.org/10.1007/11558989\_15",
+}
+
 @misc{netmodeler,
     title = "Netmodeler: a C++ package for analyzing Complex Networks",
     URL = "http://boykin.acis.ufl.edu/wiki/index.php/Netmodeler"
