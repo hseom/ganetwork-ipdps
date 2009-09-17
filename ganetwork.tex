@@ -1,0 +1,442 @@
+\documentclass[12pt,journal,draftcls,letterpaper,onecolumn]{IEEEtran}
+\makeatletter
+\usepackage{cite}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+%\usepackage[retainorgcmds]{IEEEtrantools}
+%\usepackage{algorithm}
+%\usepackage{algorithmic}
+%\usepackage{subfigure}
+%\usepackage{url}
+\begin{document}
+\title{Not Decided}
+%\author{\IEEEauthorblockN{Heungsik Eom}
+%\IEEEauthorblockA{Electrical and\\Computer Engineering\\
+%University of Florida\\
+%Gainsville, Florida 32611\\
+%Email: eomhes@gmail.com}
+%\and
+%\IEEEauthorblockN{P. Oscar Boykin}
+%\IEEEauthorblockA{Electrical and\\Computer Engineering\\
+%University of Florida\\
+%Gainsville, Florida 32611\\
+%Email: boykin@acis.ufl.edu}
+%}
+\maketitle
+
+\begin{abstract}
+
+In our study, we address the behavior and problem of free riders wh degrade
+the network performance. By using the genetic algorithm, we show that free riders
+can naturally evolve to maximize its own benefit with minimum efforts, which result
+in "the tragedy of the common" in absence of any countermeasures for free riders.
+Furthermore, we propose the simple solution whic stops free riders ignoring neighbors'
+requests by exchanging reciprocal token. To implement the token method, we establish
+the neighbor token table which includes information about its neighbors and the number
+of tokes for them. According to our observation, simple solution we proposed prevents
+free riders taking any advantages from the network, and eventually induces them to 
+contribute to the network.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Peer-to-peer network, Free riders, Genetic algorithm, Token method
+\end{IEEEkeywords}
+
+\IEEEpeerreviewmaketitle
+\section{Introduction}\label{sec:introduction}
+
+Distributed P2P file sharing system has come into spotlight due to advantage of organizing
+and maximizing network ability and scalability. Furthermore, the popularization of internet
+applications such as Napstar\cite{napster}, Gnutella\cite{gnutella} and BitTorrent\cite{bittorrent} has accelerated the
+employment of P2P file sharing system. Actually, recent studies indicate that over
+70 percent of all internet traffic results from P2P file sharing system. In spite of the above benefits
+and popularity of P2P file sharing system, there are still lots of challenges to be handled.
+Usually, distributed file sharing systems require each node to work together for good of the
+whole network. For that reason, selfish user called as free riders, who only take advantages
+from neighbors without any contributions, will break the system. According to \cite{hd:belltoll}, while P2P
+network makes up 50 percent of free riders, only 25 percent of participants provide for 98
+percent of requests from its neighbors.
+
+In our study, we address the behavior and problem of free riders who nibble network
+performance. Firstly, we show that free riders can naturally evolve to maximize its own
+benefit with minimum efforts, which result in "the tragedy of the common\cite{tc:tragedy}" in absence of
+any countermeasures against free riders. To do this, we define three parameters – Time to
+Live (TTL), connection limit and message ignore probability – as genes to present the
+characteristics of node.\\
+
+\begin{itemize}
+\item {\bf Time To Live(TTL):}
+Each node propagates the message with depth of TTL.\\
+\item {\bf Connection Limit:}
+Each node limits the maxium number which be able to connect to neighbors.\\
+\item {\bf Message ignore probability:}
+The degree of selfishness against request of neighbors.\\
+\end{itemize}
+
+Using the genetic algorithm, we observe that free riders optimize the genes to maximize 
+their benefits in the network. Combined with genetic algorithm, to prevent free riders not 
+evolving, we make small and big group in which parents need to be from the same group.
+
+Another contribution of this paper is that we propose the simple protocol which stops the free
+riders ignoring neighbors‟ requests by exchanging reciprocal token. To implement the token
+method, we establish the neighbor token table which includes the information about its
+neighbors and the number of tokens for them. According to response from neighbors, the
+request node increases or decreases tokens. As a result, simple protocol we proposed prevents
+free riders taking any advantages from the network, and eventually induces them to
+contribute to the network.
+
+\section{System Description}\label{sec:system}
+Our simulation comprises with network component and genetic algorithm (GA) engine.
+Firstly, network component part executes network action such as query and cache, and
+extracts parameters for GA engine. For our simulation, we model the unstructured P2P
+network for file sharing\cite{ek:survey}. In unstructured P2P file sharing system, all the nodes equally act
+as both roles of servers and clients. Also, because there is no locality for nodes and contents
+such as DHT, implementing the network can be simply handled. Actually, for each query, the
+protocol use flooding or random walks.
+
+The rest of simulator is GA engine which is responsible for node assessment and
+evolution. In fact, our key idea is derived from the concept of the GA which finds the optimal
+parameters to maximize the fitness\cite{genetic}. Using the concept for the GA, we demonstrate how
+free riders evolve naturally to exploit the maximum benefits that it takes from the network.
+Especially, we make two populations, the big group and small group. Mating without
+partition of group keeps all the nodes mixing together, and it prevents the natural evolution of
+free riders. Thus, mating only happens in the same group: both of parents, father and mother,
+need to be from the same group. Figure \ref{fig:simblock} shows the block diagram for our simulator.
+
+\begin{figure}
+\centering
+\includegraphics[width=5.2in]{simblock}
+\caption{Block diagram for Genetic algorith simulator} 
+\label{fig:simblock}
+\end{figure}
+
+\subsection{Network model}\label{sec:netmodel}
+As shown in figure \ref{fig:network}, we simply modeled the unstructured p2p network for file sharing with
+$N$ nodes. To construct the network model, we use $netmodeler$ which is C++ library for
+modeling networks developed at University of Florida and UCLA\cite{netmodeler}.
+
+\begin{figure}
+\centering
+\includegraphics[width=2.5in]{network}
+\caption{Network Configuration} 
+\label{fig:network}
+\end{figure}
+
+Our network model consists of two parts; network configuration and network operation such
+as query and cache action. In network configuration period, $N$ nodes sequentially join the
+network attaching to two existing nodes randomly selected. At that time, three parameters,
+which describe the characteristics of node, are assigned to joining node; message ignore
+probability, TTL and connection limit. Firstly, message ignore probability reflects the
+selfishness of users. In other words, nodes, which have high message ignore probability, tend
+to seldom responses any query and cache actions from its neighbors. Message ignore
+probability is assigned to node with uniformly distributed probability. TTL and connection
+limit are selected within bounded range and assigned to new generated node. In figure 2,
+marks around nodes mean the number of connection limit to be able to connect to neighbors.
+Also, if new joining node asks to connect to full-connected node, the request is denied and re-
+asked to another node.
+
+After network configuration is completed, each node executes cache and query actions as
+following: The node $n_A$ has a certain character string $I_A$ as item. This character string is
+generated by \emph{randomstringgenerator}. For system stabilization, the node $n_A$ replicates its own
+item to neighbors with broadcast whose size depends on the value of TTL and connection
+limit. Followed by cache for $I_A$, another node, $n_B$, randomly selected requests the query for
+item $I_A$ to its neighbors. For adequate result acquisition, we ran 100 query actions per a cache
+action with different request nodes.
+
+In order to evaluate the network performance, we refer to communication traffic and
+memory consumption as CPU and disk cost. Also, we identify the benefit which node
+attempts to maximize as hitrate. Hitrate, CPU and disk cost are defined by
+\[
+Hitrate=\frac{Query_{resp}}{Query_{req}}
+\]
+\[
+CPU\_cost=Message_{recv}+Message_{proc} \times N_{items}
+\]
+\[
+disk\_cost=N_{items}
+\]
+
+where $Query_{req}$ and $Query_{resp}$ refer to the number of queries that the node requests and is answered by neighbors repectively. $Message_{recv}$ and $Message_{proc}$ represent the number of messages that the node received and processed. Also, $N_{items}$ is the number of items that the node obtains.
+
+\subsection{Genetic algorithm}\label{sec:genetic}
+Since local nodes tend to minimize its own loads such as communication traffic and memory
+consumption, but maximize the number of hits which gets for its queries, cheating strategy of
+free riders is able to arise naturally. For these reasons, we apply the genetic algorithm to
+observe the intention and behavior of local nodes. In fact, our key idea is derived from the
+concept of the GA which finds the optimal parameters to maximize the fitness. To do this,
+each node in the network is regarded as individual which organizes one generation and the
+node characteristics parameters –message ignore probability, TTL, and connection limit – are
+considered as gene for each individual.
+Also we established the fitness function using parameters defined in previous section: Hitrate,
+CPU and disk cost. The fitness function evaluates the quality of individuals and is used to
+select parents nodes.
+\[
+Fitness = Exp\{\alpha_{h}\times hitrate-(\alpha_{c}\times cpu_cost + \alpha_{d}\times disk_cost)\}
+\]
+
+where $\alpha$ is normalization factor. We distinguished the fitness function with positive and
+negative part. Positive part includes the hitrate and negative part consists of the CPU and disk
+cost. Therefore, as CPU and disk cost decrease and hitrate increases, fitness will increase.
+After network operation process, each node estimates its own hitrate, CPU and disk cost and
+the GA core calculates the fitness of each node. Fitness obtained by fitness function is used to
+rank nodes for parent selection. Based on the ranked nodes, GA core selects parent nodes and
+generates child nodes by crossover and mutation operation of three genes of parents ;
+message ignore probability, TTL and connection limit. The crossover and mutation of each
+gene is following as:\\
+
+{\bf Message ignore probability -}
+$Average[Father, Mother] + m\% of mutation$\\
+{\bf TTL -}
+$Random[Father, Mother] + t\% of mutation$\\
+{\bf Connection limit -}
+$Random[Father, Mother] + c\% of mutation$\\
+
+For our simulation, we set 5\%, 0.1\% and 0.1\% for mutation of Message ignore probability,
+TTL and connection limit respectively. Because the values of TTL and connection limit are
+positive integer and bigger than message ignore probability, we set relatively small value for
+the mutation of TTL and connection limit over message ignore probability. In parent selection
+process, we have tried several methods to reduce the computation loads of genetic algorithm.
+As a result, we decided the square-root selection method\cite{genetic}. In addition, allowing any pair of
+nodes to mate to produce a child keeps all the nodes mixing together. It prevents the natural
+evolution of free riders. For that reason, we make two populations, the big group and small
+group. Mating only happens in the same group: both of parents, father and mother, need to be
+from the same group. Actually, in our setting, the ratio of small group and big group is 1 to 9.
+
+\section{Evolution of free riders}\label{sec:evolution}
+In this section, we show that free riders can naturally evolve. Firstly, we demonstrate the
+intention of free riders in the absence of punishment. Furthermore, against the cheating
+strategy of free riders, we introduce the simple solution which stops the free riders taking
+benefits from network without any contribution. In practice, making the cheating strategy be
+broken by taking some countermeasure, we can stop free riders. The countermeasure we
+propose is based on exchanging reciprocal token. In fact, the ability of the node to get the
+resource that neighbor possesses depends on the number of reciprocal tokens.
+
+\subsection{The problem of free riders}\label{sec:problem}
+The problem of free riders is no contribution but only taking resource from network. 
+In this section, we demonstrate the problem of free riders. Figure \ref{fig:nocpucost}, \ref{fig:nodiskcost}, 
+\ref{fig:nohitrate}, and \ref{fig:fitness1} show hitrate, CPU / disk cost and fitness value
+for given message ignore probability without any punishment on free riders. In contrast with
+CPU and disk cost which are internally related to its own characteristics, p\_ignore, hit rate is
+external factor affected by response of neighbors. Actually, in figure \ref{fig:nocpucost} and \ref{fig:nodiskcost}, 
+it can show that CPU and disk cost decrease, as message ignore probability, $p\_ignore$, increases. Because
+the nodes which have high message ignore probability process fewer cache and query
+messages, they have smaller CPU and disk cost than low ignore probability nodes. However, in
+figure \ref{fig:nohitrate}, it is shown that the distribution of hit rate is unrelated to message ignore
+probability. Totally, as shown in figure \ref{fig:fitness1}, in case of fitness value which is calculated using
+message ignore probability, CPU and disk cost, fitness value increases as message ignore
+probability increases.
+
+\begin{center}
+\begin{figure*}[ht]
+\centering
+\begin{tabular}{c c}
+\begin{minipage}[t]{3.5in}
+\centering
+\includegraphics[width=3in]{cpucost1}
+\caption{CPU\_cost for message ignore probability}
+\label{fig:nocpucost}
+\end{minipage}
+&\begin{minipage}[t]{3.5in}
+\centering
+\includegraphics[width=3in]{diskcost1}
+\label{fig:nodiskcost}
+\caption{Disk\_cost for message ignore probability}
+\end{minipage}
+\end{tabular}
+\end{figure*}
+\end{center}
+
+\begin{center}
+\begin{figure*}[ht]
+\centering
+\begin{tabular}{c c}
+\begin{minipage}[t]{2in}
+\centering
+\includegraphics[width=2.5in]{hitrate1}
+\caption{Hitrate for message ignore probability}
+\label{fig:nohitrate}
+\end{minipage}
+&\begin{minipage}[t]{2in}
+\centering
+\includegraphics[width=2.5in]{fitness1}
+\label{fig:fitness1}
+\caption{Fitness for message ignore probability}
+\end{minipage}
+\end{tabular}
+\end{figure*}
+\end{center}
+
+The evolution of message ignore probability, hitrate, CPU and disk cost over generations are
+illustrated in figure \ref{fig:noprob}, \ref{fig:nohit}, \ref{fig:nocpu}, and \ref{fig:nodisk}. 
+In figure \ref{fig:noprob}, small group allowed to evolve independently becomes selfish, 
+which maintain high message ignore probability. This is because increasing
+message ignore probability saves CPU and disk cost but does not hurt its hitrate. In fact,
+figure \ref{fig:nohit} shows that hitrate of small group is almost identical to that of big group. However,
+in case of CPU and disk cost, small group has an extremely slight CPU and disk cost. In next
+section, we simulate the identical situation to this section except for applying the
+countermeasure and present different evolution pattern of free riders.
+
+\begin{center}
+\begin{figure*}[ht]
+\centering
+\begin{tabular}{c c}
+\begin{minipage}[t]{2in}
+\centering
+\includegraphics[width=2.5in]{notokenprob}
+\caption{CPU\_cost for message ignore probability}
+\label{fig:noprob}
+\end{minipage}
+&\begin{minipage}[t]{2in}
+\centering
+\includegraphics[width=2.5in]{notokenhit}
+\label{fig:nohit}
+\caption{Disk\_cost for message ignore probability}
+\end{minipage}
+\end{tabular}
+\end{figure*}
+\end{center}
+
+\begin{center}
+\begin{figure*}[ht]
+\centering
+\begin{tabular}{c c}
+\begin{minipage}[t]{2in}
+\centering
+\includegraphics[width=2.5in]{notokencpu}
+\caption{Hitrate for message ignore probability}
+\label{fig:nocpu}
+\end{minipage}
+&\begin{minipage}[t]{2in}
+\centering
+\includegraphics[width=2.5in]{notokendisk}
+\label{fig:nodisk}
+\caption{Fitness for message ignore probability}
+\end{minipage}
+\end{tabular}
+\end{figure*}
+\end{center}
+
+\subsection{countermeasure}\label{sec:countermeasure}
+Our goal is to punish the hit rate of nodes with high message ignore probability. 
+It is alsoexpected that this punishment makes free riders relieve its selfishness. To implement the
+punishment, we propose the reciprocal token method where node‟s capability to take items is
+based on the number of token. In this method, each node in the network maintains the
+neighbor token table which contains token information of its own neighbor. The token
+information consists of the address of neighbors and its tokens for neighbors. Initially, in
+node joining process, the node connected to existing node pushes the address of existing node
+and initial token values into an empty entry of neighbor token table. Such initial token value
+is to give the chance which can contribute to the network so that each node earns token
+enough to share network resource. To help understand of the token method, we describe three
+scenarios as shown in figure 1. The node $n_A$, sends a query to connected node $n_B$, $n_C$ and
+disconnected node $n_D$. (The region of query) In first scenario, $n_B$ searches its neighbor token
+table and serves required item if tokens for $n_A$ remain. As the consideration for $n_B$'s sharing,
+$n_A$ increases the tokens for nB by one. On the other hands, $n_B$ decreases the tokens for $n_A$ by
+one. Secondly, if $n_C$ ignore the query of $n_A$ or do not have the requested item, $n_A$ updates its
+own neighbor token table decreasing the token for $n_C$. For last case, we consider the
+disconnection between request and requested node. First of all, $n_D$ which have no information
+about request node, $n_A$ creates the entry for $n_A$ and initiates token value. Also node $n_A$
+appends the information for $n_D$ into the neighbor token table and decreases the $n_D$'s tokens
+because $n_D$ ignores the query.
+
+\begin{figure}
+\centering
+\includegraphics[width=4.5in]{token}
+\caption{Reciprocal token method} 
+\label{fig:token}
+\end{figure}
+
+In reciprocal token method, the nodes which intentionally ignore the queries of neighbors
+with high message ignore probability exhaust its tokens, and eventually, cannot take any
+advantages from the network. Ultimately, the nodes have to relieve their selfishness to get the
+benefits. Our protocol is very simple, but it is enough to lead for free riders to contribute to
+the network.
+
+\begin{figure}
+\centering
+\includegraphics[width=2.5in]{fitness2}
+\caption{Fitness value for message ignore probability with reciprocal token method}
+\label{fig:tokenfit}
+\end{figure}
+
+\begin{center}
+\begin{figure*}[ht]
+\centering
+\begin{tabular}{c c}
+\begin{minipage}[t]{2in}
+\centering
+\includegraphics[width=2.5in]{tokenprob}
+\caption{The evolution of message ignore probability with reciprocal token method as generation goes on}
+\label{fig:tokenprob}
+\end{minipage}
+&\begin{minipage}[t]{2in}
+\centering
+\includegraphics[width=2.5in]{tokenhit}
+\caption{The evolution of hitrate with reciprocal token method as generation goes on}
+\label{fig:tokenhit}
+\end{minipage}
+\end{tabular}
+\end{figure*}
+\end{center}
+
+\begin{center}
+\begin{figure*}[ht]
+\centering
+\begin{tabular}{c c}
+\begin{minipage}[t]{2in}
+\centering
+\includegraphics[width=2.5in]{tokencpu}
+\caption{The evolution of CPU\_cost with reciprocal token method as generation goes on}
+\label{fig:tokencpu}
+\end{minipage}
+&\begin{minipage}[t]{2in}
+\centering
+\includegraphics[width=2.5in]{tokendisk}
+\caption{The evolution of disk\_cost with reciprocal token method as generation goes on}
+\label{fig:tokendisk}
+\end{minipage}
+\end{tabular}
+\end{figure*}
+\end{center}
+
+
+Figure \ref{fig:tokenfit}, \ref{fig:tokenprob}, \ref{fig:tokenhit}, \ref{fig:tokencpu}, and \ref{fig:tokendisk}
+show the evolution of free riders with reciprocal token method over generations.
+Firstly, figure \ref{fig:tokenfit} displays the fitness value while applying the token method. 
+The fitness value decreases as message ignore probability increases. It means that the node which have
+high message ignore probability cannot take any benefits from network. Also, in figure \ref{fig:tokenprob}
+and \ref{fig:tokenhit}, hitrate of small group in early generation is almost 0 due to high message ignore
+probability. However, as generation goes on, small group decreases its own message ignore
+probability in order not to be punished in the network and eventually behaves like big group.
+As message ignore probability of small group decreases, hitrate is also similar to big group.
+
+\section{Conclusion and Future works}\label{sec:concl}
+
+We have described the intention of free riders using genetic algorithm. Our key idea is
+derived from the concept of genetic algorithm which finds the optimal parameters to
+maximize the fitness. In order to model free riders, we defined message ignore probability
+which presents the degree of selfishness.
+
+In addition, we proposed the simple solution to prevent free riders selfishly behaving and
+ultimately induce them to contribute to the network. To do so, we established the neighbor
+token table which includes the information about neighbor address and the number of tokens.
+Based on its query requests, the node increases or decreases the number of tokens for
+neighbors.
+
+Our simulation results present that without any punishment, free riders preserve their
+selfishness to maximize the benefits without any contribution to the neighbors. Free riders,
+however, evolve to have low message ignore probability in the protocol applied token method
+we proposed. Finally free riders behaved like another altruistic peer to stay in the network.
+
+For future works, we need to model free riders more detailed, especially, such as short
+network join period and often requiring well-liked items. Using it, we will hopefully modify
+our protocol so as to overcome more detailed characteristics of free riders. Furthermore, we
+wish to optimize global parameters as well as local parameters through genetic algorithm
+which simultaneously regards network and node as population.
+
+\bibliographystyle{IEEEtran}
+\bibliography{genetic}
+
+\end{document}
+
+
