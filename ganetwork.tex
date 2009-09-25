@@ -59,33 +59,19 @@ from neighbors without any contributions, will break the system. According to \c
 network makes up 50 percent of free riders, only 25 percent of participants provide for 98
 percent of requests from its neighbors.
 
-In our study, we address the behavior and problem of free riders who nibble network
-performance. Firstly, we show that free riders can naturally evolve to maximize its own
-benefit with minimum efforts, which result in "the tragedy of the common\cite{tc:tragedy}" in absence of
-any countermeasures against free riders. To do this, we define three parameters – Time to
-Live (TTL), connection limit and message ignore probability – as genes to present the
-characteristics of node.\\
+In our study, we address the behavior and problem of free riders who reduce network
+performance. Firstly, we show that given a simple flooding P2P protocol,
+free-riding behavior evolves naturally when a subset of nodes are allowed to
+maximize their utility of the network.  
+This results in "the tragedy of the common\cite{tc:tragedy}" in the absence of
+any countermeasures against free riders.
 
-\begin{itemize}
-\item {\bf Time To Live(TTL):}
-Each node propagates the message with depth of TTL.
-\item {\bf Connection Limit:}
-Each node limits the maxium number which be able to connect to neighbors.
-\item {\bf Message ignore probability:}
-The degree of selfishness against request of neighbors.\\
-\end{itemize}
-
-Using the genetic algorithm, we observe that free riders optimize the genes to maximize 
-their benefits in the network. Combined with genetic algorithm, to prevent free riders not 
-evolving, we make small and big group in which parents need to be from the same group.
-
-Another contribution of this paper is that we propose the simple protocol which stops the free
-riders ignoring neighbors‟ requests by exchanging reciprocal token. To implement the token
-method, we establish the neighbor token table which includes the information about its
-neighbors and the number of tokens for them. According to response from neighbors, the
-request node increases or decreases tokens. As a result, simple protocol we proposed prevents
-free riders taking any advantages from the network, and eventually induces them to
-contribute to the network.
+Once we show the natural evolution of free-riders, a second
+contribution of this paper is to show that a simple protocol can stop the
+free-riding behavior.  This is done by modifying the simple flooding protocol
+to penalize nodes that ignore query requests.  By adding a tit-for-tat
+behavior, there incentive to be a free-rider is removed, which pushes all
+nodes to evolve towards a cooperating behavior.
 
 The rest of this paper is organized as follows: In section \ref{sec:system}, We illustrate the network model 
 in our simulation and explain how to apply the concept of genetic algorithm to our idea. In section \ref{sec:evolution}, 
@@ -95,22 +81,48 @@ on P2P network and the problem of free-riding are reviewed in \ref{sec:related}.
 are presented in section \ref{sec:concl}.
 
 \section{System Description}\label{sec:system}
-Our simulation comprises with network component and genetic algorithm (GA) engine.
-Firstly, network component part executes network action such as query and cache, and
-extracts parameters for GA engine. For our simulation, we model the unstructured P2P
-network for file sharing\cite{ek:survey}. In unstructured P2P file sharing system, all the nodes equally act
-as both roles of servers and clients. Also, because there is no locality for nodes and contents
-such as DHT, implementing the network can be simply handled. Actually, for each query, the
-protocol use flooding or random walks.
 
-The another part of simulator is GA engine which is responsible for node assessment and
-evolution. In fact, our key idea is derived from the concept of the GA which finds the optimal
-parameters to maximize the fitness\cite{genetic}. Using the concept for the GA, we demonstrate how
-free riders evolve naturally to exploit the maximum benefits that it takes from the network.
-Especially, we make two populations, the big group and small group. Mating without
-partition of group keeps all the nodes mixing together, and it prevents the natural evolution of
-free riders. Thus, mating only happens in the same group: both of parents, father and mother,
-need to be from the same group. Figure \ref{fig:simblock} shows the block diagram for our simulator.
+For our simulation, we model an unstructured P2P network for file
+sharing\cite{ek:survey}. In unstructured P2P file sharing, all the nodes
+equally act as both roles of servers and clients.  In our model there is no
+locality for nodes and contents such as DHT, so implementing the network is
+very simple.  We define a very simple P2P protocol which is very similar to
+the original Gnutella protocol.  Message broadcasts are done by sending a
+message with a TTL.  Upon receiving a message, each node decrements the
+message TTL and if the TTL is greater than zero the node forwards that message
+to each neighbor other than the one from which the message was received.  To
+share objects, a node broadcasts a cache message and to query for objects a
+node sends a query message.  Each node follows its own version of the protocol
+defined by certain fixed parameters:
+
+\begin{itemize}
+\item {\bf Time To Live(TTL):} the number of hops each query and cache message takes
+before expiring.
+\item {\bf Connection Limit:}
+the maximum number of neighbors each node will accept.
+\item {\bf Message ignore probability:}
+the probability that a caching of querying 
+\end{itemize}
+
+Each node is initialized with values for the above parameters.  Subsequently,
+we evaluate the performance of this network for each node.  We evaluate the
+costs and benefits each node experiences which is combined into node fitness.
+We operate a genetic algorithm (GA)\cite{genetic} on the sets of nodes using
+the fitness we obtain from the network simulation, and we assume that each
+node will individually evolve towards a higher local fitness, \emph{not
+towards a global notion of fitness}.  It is worth repeating that nodes are not
+trying to optimize the common global network fitness, but they are only
+seeking to optimize \emph{their own fitness value}.
+
+To build a system complex enough to see a rich behavior, we create two
+``species" or groups of nodes.  One is defined to be 10\% of the total
+population, and the other accounts for 90\%.
+Mating only happens in the same group: both of parents, father and mother,
+need to be from the same group.
+The intuition is that even
+completely selfish behavior on the part of the smaller population should not
+destroy the entire network performance.
+Figure \ref{fig:simblock} shows the block diagram for our simulator.
 
 \begin{figure}
 \centering
@@ -120,7 +132,7 @@ need to be from the same group. Figure \ref{fig:simblock} shows the block diagra
 \end{figure}
 
 \subsection{Network model}\label{sec:netmodel}
-As shown in figure \ref{fig:network}, we simply modeled the unstructured p2p network for file sharing with
+Figure \ref{fig:network} shows our model for the unstructured p2p network for file sharing with
 $N$ nodes. To construct the network model, we use $netmodeler$ which is C++ library for
 modeling networks developed at University of Florida and UCLA\cite{netmodeler}.
 
