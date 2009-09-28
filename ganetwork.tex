@@ -438,36 +438,44 @@ As message ignore probability of small group decreases, hitrate is also similar 
 \section{Related Works}\label{sec:related}
 
 Through this paper, we show the natural evolution of free-riding by use of a genetic
-algorithm and the elimination of free-riding by adding tit-for-tat behavior.
-In fact, the use of genetic algorithm on solving the problem of peer-to-peer network has been
-achieved in various studies. One example area of applying genetic algorithm to peer to peer
-network is optimal routing strategy. Firstly novel query routing strategy is proposed by Wong
-et al. in \cite{www05}. To resolve high bandwidth consumption and poor semi-parallel search, they
-applied genetic algorithm for finding long paths in this study. Iles et al.\cite{SRDS02} explores the
-search scheme for routing strategy in peer to peer network using genetic programming. In this
-study, results from simulation on peer to peer network are described, in which genetic
-programming is used to evolve routing strategies that optimize resource location in various
-traffic low scenarios. To achieve it, each protocol consists of two expressions: the CONN
-expression which specify the number of connection to be maintained, and the RANK
-expression which is used to rank the connections. In \cite{IIHMSP07}, genetic algorithm is used to find the
-coarsest GridPeer resources. Then, more accurate resources have been discovered through the
-ant algorithm. New approach for designing P2P applications based on the genetic algorithm is
-presented in \cite{ERSADS01}. Additionally, this study introduces a framework, Anthill, which supports the
-development and study of new protocols based on the P2P approach. Koo et al.\cite{ns:neighbor} propose a
-genetic algorithm based neighbor selection strategy which is incentive-compatible and
-suitable for real time deployment for peer to peer networks. Furthermore, the strategy
-proposed by this study has been compared with the existing strategy using two welfare
-metrics: system throughput and average downloading time.
-
-Furthermore, a number of strategies have been proposed to treat this problem for a few years.
-In \cite{EUROPAR07}, a Gnutella-like unstructured P2P network is proposed to employ free riders to serve as
-indexing nodes. Kamvar et al.[15] address free-riding problem via scoring system called as
-\emph{EigenTrust} score which is used to measure the relative participation levels of peer in the
-system. Also, Dutta et al.[16] focus on tackling the free-rider with a distributed rating system.
-Their works provide two different approaches. In first approach, all users act as a jury to rate
-each other based on the service it receives from others and store its own result of ratings. In
-second approach, each user has a few designated supervisors and rating value is updated by
+algorithm. In fact, applying the genetic algorithm on solving the problem of peer-to-peer
+networks has been achieved in various studies. One example of the application of genetic
+algorithm to peer to peer networks is to search optimal routing strategy for query and cache.
+Firstly, to resolve high bandwidth consumption and poor semi-parallel search, a novel routing
+function called \emph{GAroute} is proposed in \cite{WWW05}. In this paper, ID of each peer regards as a gene
+and a chromosome which contains a sequence of genes represents a query routing path. In
+selection process for next generation, good chromosomes with the highest information gain
+and maximum length are primarily selected. Iles et al.\cite{SRDS02} explore the search scheme for
+routing strategy in peer to peer network using genetic programming. In this study, results
+from simulation on peer to peer network are described, in which genetic programming is used
+to evolve routing strategies that optimize resource location in various traffic low scenarios.
+Network protocol consists of two expressions: the CONN expression which specify the
+number of connection to be maintained, and the RANK expression which is used to rank the
+connections. Each expression are represented as trees and manipulated using crossover and
+mutation operations.
+Koo et al.\cite{ns:neighbor} propose a genetic algorithm based neighbor selection strategy which is
+incentive-compatible and suitable for real time deployment for peer to peer networks.
+Furthermore, the strategy proposed by this study has been compared with the existing
+strategy using two welfare metrics: system throughput and average downloading time. In \cite{IIHMSP07},
+genetic algorithm is used to find the coarsest \emph{GridPeer} resources. Then, through the
+transformation the result of genetic algorithm into the pheromone of ant algorithm, more
+accurate resources have been discovered using the ant algorithm.
+The most difference between above works and our study is what role genetic algorithm can
+play in improving system design. While previous studies we mentioned in this section use the
+genetic algorithm as solution to search the optimal value for problems they define, we
+employed the genetic algorithm on the top of system observation. There is no intervention of
+the genetic algorithm over system components. The punishment of free riders is achieved by
+adding tit-for-tat behavior in our work.
+In practice, a variety of strategies have been proposed to treat free-riding problem. In \cite{EUROPAR07}, a
+Gnutella-like unstructured P2P network is proposed to employ free riders to serve as indexing
+nodes. Kamvar et al.[6] address free-riding problem via scoring system called as EigenTrust
+score which is used to measure the relative participation levels of peer in the system. Also,
+Dutta et al.[7] focus on tackling the free-rider with a distributed rating system. Their work
+provides two different approaches. In first approach, all users act as a jury to rate each other
+based on the service it receives from others and store its own result of ratings. In second
+approach, each user has a few designated supervisors and rating value is updated by
 supervisors.
+
 
 \section{Conclusion and Future works}\label{sec:concl}
 
