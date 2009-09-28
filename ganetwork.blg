@@ -10,42 +10,42 @@ Database file #1: genetic.bib
 Done.
 You've used 8 entries,
             4039 wiz_defined-function locations,
-            835 strings with 7865 characters,
-and the built_in function-call counts, 3081 in all, are:
-= -- 217
-> -- 52
-< -- 6
+            845 strings with 8172 characters,
+and the built_in function-call counts, 3364 in all, are:
+= -- 249
+> -- 49
+< -- 12
 + -- 27
-- -- 11
-* -- 148
-:= -- 532
+- -- 9
+* -- 163
+:= -- 584
 add.period$ -- 16
 call.type$ -- 8
 change.case$ -- 8
-chr.to.int$ -- 0
+chr.to.int$ -- 18
 cite$ -- 8
-duplicate$ -- 271
-empty$ -- 293
-format.name$ -- 14
-if$ -- 649
+duplicate$ -- 279
+empty$ -- 306
+format.name$ -- 11
+if$ -- 712
 int.to.chr$ -- 0
 int.to.str$ -- 8
-missing$ -- 59
-newline$ -- 57
+missing$ -- 57
+newline$ -- 61
 num.names$ -- 3
-pop$ -- 180
+pop$ -- 172
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 228
+skip$ -- 251
 stack$ -- 0
-substring$ -- 8
-swap$ -- 152
+substring$ -- 50
+swap$ -- 167
 text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 5
 type$ -- 8
 warning$ -- 0
-while$ -- 3
+while$ -- 7
 width$ -- 9
-write$ -- 92
+write$ -- 98

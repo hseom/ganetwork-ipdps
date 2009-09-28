@@ -55,7 +55,7 @@ employment of P2P file sharing system. Actually, recent studies indicate that ov
 and popularity of P2P file sharing system, there are still lots of challenges to be handled.
 Usually, distributed file sharing systems require each node to work together for good of the
 whole network. For that reason, selfish user called as free riders, who only take advantages
-from neighbors without any contributions, will break the system. According to \cite{hd:belltoll}, while P2P
+from neighbors without any contributions, will break the system. According to \cite{journals/dsonline/HughesCW05}, while P2P
 network makes up 50 percent of free riders, only 25 percent of participants provide for 98
 percent of requests from its neighbors.
 
@@ -83,7 +83,7 @@ are presented in section \ref{sec:concl}.
 \section{System Description}\label{sec:system}
 
 For our simulation, we model an unstructured P2P network for file
-sharing\cite{ek:survey}. In unstructured P2P file sharing, all the nodes
+sharing\cite{journals/comsur/LuaCPSL05}. In unstructured P2P file sharing, all the nodes
 equally act as both roles of servers and clients.  In our model there is no
 locality for nodes and contents such as DHT, so implementing the network is
 very simple.  We define a very simple P2P protocol which is very similar to
@@ -442,10 +442,10 @@ algorithm. In fact, applying the genetic algorithm on solving the problem of pee
 networks has been achieved in various studies. One example of the application of genetic
 algorithm to peer to peer networks is to search optimal routing strategy for query and cache.
 Firstly, to resolve high bandwidth consumption and poor semi-parallel search, a novel routing
-function called \emph{GAroute} is proposed in \cite{WWW05}. In this paper, ID of each peer regards as a gene
+function called \emph{GAroute} is proposed in [1]. In this paper, ID of each peer regards as a gene
 and a chromosome which contains a sequence of genes represents a query routing path. In
 selection process for next generation, good chromosomes with the highest information gain
-and maximum length are primarily selected. Iles et al.\cite{SRDS02} explore the search scheme for
+and maximum length are primarily selected. Iles et al.[2] explore the search scheme for
 routing strategy in peer to peer network using genetic programming. In this study, results
 from simulation on peer to peer network are described, in which genetic programming is used
 to evolve routing strategies that optimize resource location in various traffic low scenarios.
@@ -453,10 +453,10 @@ Network protocol consists of two expressions: the CONN expression which specify 
 number of connection to be maintained, and the RANK expression which is used to rank the
 connections. Each expression are represented as trees and manipulated using crossover and
 mutation operations.
-Koo et al.\cite{ns:neighbor} propose a genetic algorithm based neighbor selection strategy which is
+Koo et al.[3] propose a genetic algorithm based neighbor selection strategy which is
 incentive-compatible and suitable for real time deployment for peer to peer networks.
 Furthermore, the strategy proposed by this study has been compared with the existing
-strategy using two welfare metrics: system throughput and average downloading time. In \cite{IIHMSP07},
+strategy using two welfare metrics: system throughput and average downloading time. In [4],
 genetic algorithm is used to find the coarsest \emph{GridPeer} resources. Then, through the
 transformation the result of genetic algorithm into the pheromone of ant algorithm, more
 accurate resources have been discovered using the ant algorithm.
@@ -466,7 +466,7 @@ genetic algorithm as solution to search the optimal value for problems they defi
 employed the genetic algorithm on the top of system observation. There is no intervention of
 the genetic algorithm over system components. The punishment of free riders is achieved by
 adding tit-for-tat behavior in our work.
-In practice, a variety of strategies have been proposed to treat free-riding problem. In \cite{EUROPAR07}, a
+In practice, a variety of strategies have been proposed to treat free-riding problem. In [5], a
 Gnutella-like unstructured P2P network is proposed to employ free riders to serve as indexing
 nodes. Kamvar et al.[6] address free-riding problem via scoring system called as EigenTrust
 score which is used to measure the relative participation levels of peer in the system. Also,

@@ -1,68 +1,159 @@
-@Article{hd:belltoll,
-  title =   "Free riding on Gnetella revisited: the bell tolls?",
-  author =  "Hughes, D. and Coulson, G. and Walerdine, J.",
-  journal = "IEEE Distributed Systems Online",
-  year =    "2005",
-  number =  "6",
-  volume =  "6",
+@Article{journals/dsonline/HughesCW05,
+  title =	"Free Riding on Gnutella Revisited: The Bell Tolls?",
+  author =	"Daniel Hughes and Geoff Coulson and James Walkerdine",
+  journal =	"IEEE Distributed Systems Online",
+  year = 	"2005",
+  number =	"6",
+  volume =	"6",
+  bibdate =	"2006-05-04",
+  bibsource =	"DBLP,
+		 http://dblp.uni-trier.de/db/journals/dsonline/dsonline6.html#HughesCW05",
+  URL =  	"http://doi.ieeecomputersociety.org/10.1109/MDSO.2005.31",
+}
+
+@Article{journals/fgcs/KooKL06,
+  title =	"On neighbor-selection strategy in hybrid peer-to-peer
+		 networks",
+  author =	"Simon G. M. Koo and Karthik Kannan and C. S. George
+		 Lee",
+  journal =	"Future Generation Comp. Syst",
+  year = 	"2006",
+  number =	"7",
+  volume =	"22",
+  bibdate =	"2006-09-14",
+  bibsource =	"DBLP,
+		 http://dblp.uni-trier.de/db/journals/fgcs/fgcs22.html#KooKL06",
+  pages =	"732--741",
+  URL =  	"http://dx.doi.org/10.1016/j.future.2006.02.015",
 }
 
 @Article{tc:tragedy,
-  title =   "Tragedy of the common",
-  author =  "Hughes, D. and Coulson, G. and Walerdine, J.",
-  journal = "IEEE Distributed Systems Online",
-  year =    "2005",
-  number =  "6",
-  volume =  "6",
+	title = "Tragedy of the common",
+	author = "Garrett Hardin",
+	journal = "Science",
+	year =    "1968",
+	volume =  "162",
 }
 
-@Article{ek:survey,
-  title =   "A Survey and Comparison of Peer to peer Overlay Network Schemes",
-  author =  "Eng Keong Lua and Jon crowcroft and Marcelo pias and Ravi Sharma and Steven lim",
-  journal = "IEEE Communication Surveys \& Tutorials",
-  year =    "2005",
-  number =  "2",
-  volume =  "7",
+@InProceedings{Iles02,
+  author =	"Michael Iles and Dwight Deugo",
+  title =	"A Search for Routing Strategies in a Peer-to-Peer
+		 Network Using Genetic Programming",
+  booktitle =	"Proc. of the 21st Symposium on Reliable Distributed
+		 Systems (21st SRDS'02)",
+  pages =	"341--346",
+  publisher =	"IEEE Computer Society",
+  address =	"Osaka, Japan",
+  month =	oct,
+  year = 	"2002",
+  keywords =	"Workshop: Reliable Peer-to-Peer Distributed Systems,
+		 reliable routing \& discovery,",
 }
 
-@InProceedings{Cooper05,
-  title =   "Quickly Routing Searches Without Having to Move
-         Content",
-  author =  "Brian F. Cooper",
-  bibdate = "2005-11-11",
-  bibsource =   "DBLP,
-         http://dblp.uni-trier.de/db/conf/iptps/iptps2005.html#Cooper05",
-  booktitle =   "Peer-to-Peer Systems {IV}, 4th International Workshop,
-         {IPTPS} 2005, Ithaca, {NY}, {USA}, February 24-25,
-         2005, Revised Selected Papers",
-  publisher =   "Springer",
-  year =    "2005",
-  volume =  "3640",
-  editor =  "Miguel Castro and Robbert van Renesse",
-  ISBN =    "3-540-29068-0",
-  pages =   "163--172",
-  series =  "Lecture Notes in Computer Science",
-  URL =     "http://dx.doi.org/10.1007/11558989\_15",
+@InProceedings{conf/europar/JoungCC07,
+  title =	"Capitalizing on Free Riders in {P2P} Networks",
+  author =	"Yuh-Jzer Joung and Terry Hui-Ye Chiu and Shy Min
+		 Chen",
+  bibdate =	"2007-08-30",
+  bibsource =	"DBLP,
+		 http://dblp.uni-trier.de/db/conf/europar/europar2007.html#JoungCC07",
+  booktitle =	"Euro-Par",
+  booktitle =	"Euro-Par 2007, Parallel Processing, 13th International
+		 Euro-Par Conference, Rennes, France, August 28-31,
+		 2007, Proceedings",
+  publisher =	"Springer",
+  year = 	"2007",
+  volume =	"4641",
+  editor =	"Anne-Marie Kermarrec and Luc Boug{\'e} and Thierry
+		 Priol",
+  ISBN = 	"978-3-540-74465-8",
+  pages =	"526--536",
+  series =	"Lecture Notes in Computer Science",
+  URL =  	"http://dx.doi.org/10.1007/978-3-540-74466-5_56",
 }
+
+@InProceedings{conf/ap2pc/Dasgupta04,
+  title =	"Intelligent Agent Enabled Genetic Ant Algorithm for
+		 {P2P} Resource Discovery",
+  author =	"Prithviraj Dasgupta",
+  publisher =	"Springer",
+  year = 	"2004",
+  volume =	"3601",
+  bibdate =	"2005-11-10",
+  bibsource =	"DBLP,
+		 http://dblp.uni-trier.de/db/conf/ap2pc/ap2pc2004.html#Dasgupta04",
+  booktitle =	"AP2PC",
+  crossref =	"conf/ap2pc/2004",
+  editor =	"Gianluca Moro and Sonia Bergamaschi and Karl Aberer",
+  ISBN = 	"3-540-29755-3",
+  pages =	"213--220",
+  series =	"Lecture Notes in Computer Science",
+  URL =  	"http://dx.doi.org/10.1007/11574781_20",
+}
+
+@InProceedings{IIHMSP07,
+	author = "Zenggang Xiong and Yang Yang and Xuemin Zhang and Fu Chen and Li Liu",
+	title = "Integrating Genetic and Ant Algorithm into P2P Grid Resource Discovery",
+	booktitle = "iih-msp",
+	pages = "83-86",
+	year = "2007"
+}
+
+
+@InProceedings{conf/www/WongLK05,
+  title =	"Information retrieval in {P2P} networks using genetic
+		 algorithm",
+  author =	"Wan Yeung Wong and Tak Pang Lau and Irwin King",
+  bibdate =	"2006-02-10",
+  bibsource =	"DBLP,
+		 http://dblp.uni-trier.de/db/conf/www/www2005si.html#WongLK05",
+  booktitle =	"WWW (Special interest tracks and posters)",
+  booktitle =	"Proceedings of the 14th international conference on
+		 World Wide Web, {WWW} 2005, Chiba, Japan, May 10-14,
+		 2005 - Special interest tracks and posters",
+  publisher =	"ACM",
+  year = 	"2005",
+  editor =	"Allan Ellis and Tatsuya Hagino",
+  ISBN = 	"1-59593-051-5",
+  pages =	"922--923",
+  URL =  	"http://doi.acm.org/10.1145/1062745.1062799",
+}
+
+@Article{journals/comsur/LuaCPSL05,
+  title =	"A survey and comparison of peer-to-peer overlay
+		 network schemes",
+  author =	"Eng Keong Lua and Jon Crowcroft and Marcelo Pias and
+		 Ravi Sharma and Steven Lim",
+  journal =	"IEEE Communications Surveys and Tutorials",
+  year = 	"2005",
+  number =	"1-4",
+  volume =	"7",
+  bibdate =	"2009-05-22",
+  bibsource =	"DBLP,
+		 http://dblp.uni-trier.de/db/journals/comsur/comsur7.html#LuaCPSL05",
+  pages =	"72--93",
+  URL =  	"http://dl.comsoc.org/cocoon/comsoc/servlets/OntologySearch?query=&amp;node=TOC1745&amp;render=false&amp;type=1",
+}
+
 
 @misc{netmodeler,
-    title = "Netmodeler: a C++ package for analyzing Complex Networks",
-    URL = "http://boykin.acis.ufl.edu/wiki/index.php/Netmodeler"
+	title = "Netmodeler: a C++ package for analyzing Complex Networks",
+	URL = "http://boykin.acis.ufl.edu/wiki/index.php/Netmodeler"
 }
 
 @misc{gnutella,
-    title = "Gntella",
-    URL = "http://www.gnu.com"
+	title = "Gntella",
+	URL = "http://gnutella.wego.com"
 }
 
 @misc{napster,
-    title = "Napster",
-    URL = "http://www.napster,com"
+	title = "Napster",
+	URL = "http://www.napster,com"
 }
 
 @misc{bittorrent,
-    title = "Bittorrent",
-    URL = "http://bitconjurer.org/BitTorrent/"
+	title = "Bittorrent",
+	URL = "http://bitconjurer.org/BitTorrent/"
 }
 
 @misc{genetic,

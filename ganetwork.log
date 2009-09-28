@@ -1,4 +1,4 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=latex 2009.4.6)  17 SEP 2009 15:48
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=latex 2009.4.6)  28 SEP 2009 15:11
 entering extended mode
  %&-line parsing enabled.
 **ganetwork
@@ -199,75 +199,53 @@ LaTeX Font Info:    ... okay on input line 12.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
 
-
-LaTeX Warning: No \author given.
-
-Missing character: There is no â in font ptmr7t!
-Missing character: There is no € in font ptmr7t!
-Missing character: There is no “ in font ptmr7t!
-Missing character: There is no â in font ptmr7t!
-Missing character: There is no € in font ptmr7t!
-Missing character: There is no “ in font ptmr7t!
-
-Underfull \hbox (badness 10000) in paragraph at lines 61--67
-
- []
-
-[1]
-LaTeX Font Info:    Try loading font information for U+msa on input line 69.
+** WARNING: \and is valid only when in conference or peerreviewca
+modes (line 26).
+[1] [2]
+LaTeX Font Info:    Try loading font information for U+msa on input line 99.
  (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2002/01/19 v2.2g AMS font definitions
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 69.
+LaTeX Font Info:    Try loading font information for U+msb on input line 99.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2002/01/19 v2.2g AMS font definitions
 )
-Underfull \hbox (badness 10000) in paragraph at lines 73--75
-
- []
-
-Missing character: There is no â in font ptmr7t!
-Missing character: There is no € in font ptmr7t!
-Missing character: There is no Ÿ in font ptmr7t!
-
-LaTeX Warning: Reference `sec:' on page 2 undefined on input line 94.
-
-[2]
 File: simblock.eps Graphic file (type eps)
  <simblock.eps>
 File: network.eps Graphic file (type eps)
- <network.eps> [3] [4]
+
+<network.eps> [3] [4]
 Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no “ in font ptmr7t!
 Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no “ in font ptmr7t!
-
-Underfull \hbox (badness 10000) in paragraph at lines 188--197
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 203--205
+ [5]
+Underfull \hbox (badness 10000) in paragraph at lines 201--210
 
  []
 
-[5]
+
+Underfull \hbox (badness 10000) in paragraph at lines 216--218
+
+ []
+
+[6]
 File: cpucost1.eps Graphic file (type eps)
  <cpucost1.eps>
 File: diskcost1.eps Graphic file (type eps)
- <diskcost1.eps> [6]
+ <diskcost1.eps>
 File: hitrate1.eps Graphic file (type eps)
  <hitrate1.eps>
 File: fitness1.eps Graphic file (type eps)
- <fitness1.eps> [7]
+ <fitness1.eps>
 File: notokenprob.eps Graphic file (type eps)
 
 <notokenprob.eps>
 File: notokenhit.eps Graphic file (type eps)
- <notokenhit.eps>
+ <notokenhit.eps> [7]
 File: notokencpu.eps Graphic file (type eps)
  <notokencpu.eps>
 File: notokendisk.eps Graphic file (type eps)
@@ -275,10 +253,10 @@ File: notokendisk.eps Graphic file (type eps)
 Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no Ÿ in font ptmr7t!
- [8]
-File: token.eps Graphic file (type eps)
 
-<token.eps>
+[8] [9]
+File: token.eps Graphic file (type eps)
+ <token.eps>
 File: fitness2.eps Graphic file (type eps)
  <fitness2.eps>
 File: tokenprob.eps Graphic file (type eps)
@@ -286,27 +264,29 @@ File: tokenprob.eps Graphic file (type eps)
 File: tokenhit.eps Graphic file (type eps)
  <tokenhit.eps>
 File: tokencpu.eps Graphic file (type eps)
- <tokencpu.eps>
-File: tokendisk.eps Graphic file (type eps)
 
-<tokendisk.eps> [9] [10] [11] (./ganetwork.bbl
-Underfull \hbox (badness 2600) in paragraph at lines 60--63
+<tokencpu.eps>
+File: tokendisk.eps Graphic file (type eps)
+ <tokendisk.eps> [10] [11] [12] [13] (./ganetwork.bbl
+Overfull \hbox (1.57587pt too wide) in paragraph at lines 52--59
+\OT1/ptm/m/n/9 http://dl.comsoc.org/cocoon/comsoc/servlets/OntologySearch?query
+=&amp;node=TOC1745&amp;render=false&amp;type=1 
+ []
+
+
+Underfull \hbox (badness 2600) in paragraph at lines 67--70
 []\OT1/ptm/m/n/9 ``Netmodeler: a c++ pack-age for an-a-lyz-ing com-plex net-wor
 ks.'' [On-line]. Avail-able:
  []
 
-) [12] (./ganetwork.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+) [14] (./ganetwork.aux) ) 
 Here is how much of TeX's memory you used:
  2227 strings out of 95087
- 31007 string characters out of 1183279
- 80226 words of memory out of 1500000
+ 31047 string characters out of 1183279
+ 81226 words of memory out of 1500000
  5393 multiletter control sequences out of 10000+50000
  27903 words of font info for 69 fonts, out of 1200000 for 2000
  28 hyphenation exceptions out of 8191
  27i,12n,24p,222b,429s stack positions out of 5000i,500n,6000p,200000b,5000s
 
-Output written on ganetwork.dvi (12 pages, 28560 bytes).
+Output written on ganetwork.dvi (14 pages, 33740 bytes).

@@ -10,37 +10,38 @@
 %\usepackage{subfigure}
 %\usepackage{url}
 \begin{document}
-\title{Not Decided}
-%\author{\IEEEauthorblockN{Heungsik Eom}
-%\IEEEauthorblockA{Electrical and\\Computer Engineering\\
-%University of Florida\\
-%Gainsville, Florida 32611\\
-%Email: eomhes@gmail.com}
-%\and
-%\IEEEauthorblockN{P. Oscar Boykin}
-%\IEEEauthorblockA{Electrical and\\Computer Engineering\\
-%University of Florida\\
-%Gainsville, Florida 32611\\
-%Email: boykin@acis.ufl.edu}
-%}
+\title{Evolution of Free-riding in P2P Networks}
+\author{\IEEEauthorblockN{Heungsik Eom}\\
+\IEEEauthorblockA{Electrical and Computer Engineering\\
+University of Florida\\
+Gainsville, Florida 32611\\
+Email: eomhes@gmail.com}\\
+\and
+\IEEEauthorblockN{P. Oscar Boykin}\\
+\IEEEauthorblockA{Electrical and Computer Engineering\\
+University of Florida\\
+Gainsville, Florida 32611\\
+Email: boykin@acis.ufl.edu}
+}
 \maketitle
 
 \begin{abstract}
 
-In our study, we address the behavior and problem of free riders wh degrade
-the network performance. By using the genetic algorithm, we show that free riders
-can naturally evolve to maximize its own benefit with minimum efforts, which result
-in "the tragedy of the common" in absence of any countermeasures for free riders.
-Furthermore, we propose the simple solution whic stops free riders ignoring neighbors'
-requests by exchanging reciprocal token. To implement the token method, we establish
-the neighbor token table which includes information about its neighbors and the number
-of tokes for them. According to our observation, simple solution we proposed prevents
-free riders taking any advantages from the network, and eventually induces them to 
-contribute to the network.
+Peer-to-peer (P2P) systems rely on cooperation to deliver service. When the
+nodes are operated by distinct parties, there may be incentives to benefit 
+from the service without contributing to maintain that service. 
+Such selfish behavior is called free-riding. It is an open question in P2P systems 
+as to when such cooperating systems will collapse in a tragedy-of-the-commons effect
+with cooperating users driven from a system due resources hopping from free-riders.
+In this work, we define a simple P2P protocol, and by use of a genetic algorithm, 
+show that free-riding naturally evolves when a subset of nodes are allowed to independently 
+change the algorithm they follow locally. In the second part of the paper, we show that
+by adding tit-for-tat behavior on the part of the majority of nodes, the free-riding subset
+will evolve towards a cooperating strategy and will no longer free-ride.
 \end{abstract}
 
 \begin{IEEEkeywords}
-Peer-to-peer network, Free riders, Genetic algorithm, Token method
+Peer-to-peer network, Free riders, Genetic algorithm
 \end{IEEEkeywords}
 
 \IEEEpeerreviewmaketitle
@@ -54,62 +55,74 @@ employment of P2P file sharing system. Actually, recent studies indicate that ov
 and popularity of P2P file sharing system, there are still lots of challenges to be handled.
 Usually, distributed file sharing systems require each node to work together for good of the
 whole network. For that reason, selfish user called as free riders, who only take advantages
-from neighbors without any contributions, will break the system. According to \cite{hd:belltoll}, while P2P
+from neighbors without any contributions, will break the system. According to \cite{journals/dsonline/HughesCW05}, while P2P
 network makes up 50 percent of free riders, only 25 percent of participants provide for 98
 percent of requests from its neighbors.
 
-In our study, we address the behavior and problem of free riders who nibble network
-performance. Firstly, we show that free riders can naturally evolve to maximize its own
-benefit with minimum efforts, which result in "the tragedy of the common\cite{tc:tragedy}" in absence of
-any countermeasures against free riders. To do this, we define three parameters – Time to
-Live (TTL), connection limit and message ignore probability – as genes to present the
-characteristics of node.\\
+In our study, we address the behavior and problem of free riders who reduce network
+performance. Firstly, we show that given a simple flooding P2P protocol,
+free-riding behavior evolves naturally when a subset of nodes are allowed to
+maximize their utility of the network.  
+This results in "the tragedy of the common\cite{tc:tragedy}" in the absence of
+any countermeasures against free riders.
 
-\begin{itemize}
-\item {\bf Time To Live(TTL):}
-Each node propagates the message with depth of TTL.
-\item {\bf Connection Limit:}
-Each node limits the maxium number which be able to connect to neighbors.
-\item {\bf Message ignore probability:}
-The degree of selfishness against request of neighbors.\\
-\end{itemize}
+Once we show the natural evolution of free-riders, a second
+contribution of this paper is to show that a simple protocol can stop the
+free-riding behavior.  This is done by modifying the simple flooding protocol
+to penalize nodes that ignore query requests.  By adding a tit-for-tat
+behavior, there incentive to be a free-rider is removed, which pushes all
+nodes to evolve towards a cooperating behavior.
 
-Using the genetic algorithm, we observe that free riders optimize the genes to maximize 
-their benefits in the network. Combined with genetic algorithm, to prevent free riders not 
-evolving, we make small and big group in which parents need to be from the same group.
-
-Another contribution of this paper is that we propose the simple protocol which stops the free
-riders ignoring neighbors‟ requests by exchanging reciprocal token. To implement the token
-method, we establish the neighbor token table which includes the information about its
-neighbors and the number of tokens for them. According to response from neighbors, the
-request node increases or decreases tokens. As a result, simple protocol we proposed prevents
-free riders taking any advantages from the network, and eventually induces them to
-contribute to the network.
-
-The rest of this paper is organized as follows: Previous studies on free riders are reviewed
-in Section II. In section \ref{sec:system}, We illustrate the network model in our simulation and 
-explain how to apply the concept of genetic algorithm to our idea. In section \ref{sec:evolution}, 
+The rest of this paper is organized as follows: In section \ref{sec:system}, We illustrate the network model 
+in our simulation and explain how to apply the concept of genetic algorithm to our idea. In section \ref{sec:evolution}, 
 we present the problem of free riders and propose the simple solution against free riders. In addition,
-the simultation result is also presented in this section. Lastly, future work and further challenges 
-is presented in section \ref{sec:}.
+the simultation result is also presented in this section. Previous studies about the use of a genetic algorithm 
+on P2P network and the problem of free-riding are reviewed in \ref{sec:related}. Lastly, conclusion and future work 
+are presented in section \ref{sec:concl}.
 
 \section{System Description}\label{sec:system}
-Our simulation comprises with network component and genetic algorithm (GA) engine.
-Firstly, network component part executes network action such as query and cache, and
-extracts parameters for GA engine. For our simulation, we model the unstructured P2P
-network for file sharing\cite{ek:survey}. In unstructured P2P file sharing system, all the nodes equally act
-as both roles of servers and clients. Also, because there is no locality for nodes and contents
-such as DHT, implementing the network can be simply handled. Actually, for each query, the
-protocol use flooding or random walks.
 
-The another part of simulator is GA engine which is responsible for node assessment and
-evolution. In fact, our key idea is derived from the concept of the GA which finds the optimal
-parameters to maximize the fitness\cite{genetic}. Using the concept for the GA, we demonstrate how
-free riders evolve naturally to exploit the maximum benefits that it takes from the network.
-Especially, we make two populations, the big group and small group. Mating without
-partition of group keeps all the nodes mixing together, and it prevents the natural evolution of
-free riders. Thus, mating only happens in the same group: both of parents, father and mother,
-need to be from the same group. Figure \ref{fig:simblock} shows the block diagram for our simulator.
+For our simulation, we model an unstructured P2P network for file
+sharing\cite{journals/comsur/LuaCPSL05}. In unstructured P2P file sharing, all the nodes
+equally act as both roles of servers and clients.  In our model there is no
+locality for nodes and contents such as DHT, so implementing the network is
+very simple.  We define a very simple P2P protocol which is very similar to
+the original Gnutella protocol.  Message broadcasts are done by sending a
+message with a TTL.  Upon receiving a message, each node decrements the
+message TTL and if the TTL is greater than zero the node forwards that message
+to each neighbor other than the one from which the message was received.  To
+share objects, a node broadcasts a cache message and to query for objects a
+node sends a query message.  Each node follows its own version of the protocol
+defined by certain fixed parameters:
+
+\begin{itemize}
+\item {\bf Time To Live(TTL):} the number of hops each query and cache message takes
+before expiring.
+\item {\bf Connection Limit:}
+the maximum number of neighbors each node will accept.
+\item {\bf Message ignore probability:}
+the probability that a caching of querying 
+\end{itemize}
+
+Each node is initialized with values for the above parameters.  Subsequently,
+we evaluate the performance of this network for each node.  We evaluate the
+costs and benefits each node experiences which is combined into node fitness.
+We operate a genetic algorithm (GA)\cite{genetic} on the sets of nodes using
+the fitness we obtain from the network simulation, and we assume that each
+node will individually evolve towards a higher local fitness, \emph{not
+towards a global notion of fitness}.  It is worth repeating that nodes are not
+trying to optimize the common global network fitness, but they are only
+seeking to optimize \emph{their own fitness value}.
+
+To build a system complex enough to see a rich behavior, we create two
+``species" or groups of nodes.  One is defined to be 10\% of the total
+population, and the other accounts for 90\%.
+Mating only happens in the same group: both of parents, father and mother,
+need to be from the same group.
+The intuition is that even
+completely selfish behavior on the part of the smaller population should not
+destroy the entire network performance.
+Figure \ref{fig:simblock} shows the block diagram for our simulator.
 
 \begin{figure}
 \centering
@@ -119,7 +132,7 @@ need to be from the same group. Figure \ref{fig:simblock} shows the block diagra
 \end{figure}
 
 \subsection{Network model}\label{sec:netmodel}
-As shown in figure \ref{fig:network}, we simply modeled the unstructured p2p network for file sharing with
+Figure \ref{fig:network} shows our model for the unstructured p2p network for file sharing with
 $N$ nodes. To construct the network model, we use $netmodeler$ which is C++ library for
 modeling networks developed at University of Florida and UCLA\cite{netmodeler}.
 
@@ -231,7 +244,7 @@ In this section, we demonstrate the problem of free riders. Figure \ref{fig:nocp
 for given message ignore probability without any punishment on free riders. In contrast with
 CPU and disk cost which are internally related to its own characteristics, p\_ignore, hit rate is
 external factor affected by response of neighbors. Actually, in figure \ref{fig:nocpucost} and \ref{fig:nodiskcost}, 
-it can show that CPU and disk cost decrease, as message ignore probability, $p\_ignore$, increases. Because
+it can show that CPU and disk cost decrease, as message ignore probability, \emph{p\_ignore}, increases. Because
 the nodes which have high message ignore probability process fewer cache and query
 messages, they have smaller CPU and disk cost than low ignore probability nodes. However, in
 figure \ref{fig:nohitrate}, it is shown that the distribution of hit rate is unrelated to message ignore
@@ -422,6 +435,48 @@ probability. However, as generation goes on, small group decreases its own messa
 probability in order not to be punished in the network and eventually behaves like big group.
 As message ignore probability of small group decreases, hitrate is also similar to big group.
 
+\section{Related Works}\label{sec:related}
+
+Through this paper, we show the natural evolution of free-riding by use of a genetic
+algorithm. In fact, applying the genetic algorithm on solving the problem of peer-to-peer
+networks has been achieved in various studies. One example of the application of genetic
+algorithm to peer to peer networks is to search optimal routing strategy for query and cache.
+Firstly, to resolve high bandwidth consumption and poor semi-parallel search, a novel routing
+function called \emph{GAroute} is proposed in \cite{conf/www/WongLK05}. In this paper, ID of each peer regards as a gene
+and a chromosome which contains a sequence of genes represents a query routing path. In
+selection process for next generation, good chromosomes with the highest information gain
+and maximum length are primarily selected. Iles et al.\cite{Iles02} explore the search scheme for
+routing strategy in peer to peer network using genetic programming. In this study, results
+from simulation on peer to peer network are described, in which genetic programming is used
+to evolve routing strategies that optimize resource location in various traffic low scenarios.
+Network protocol consists of two expressions: the CONN expression which specify the
+number of connection to be maintained, and the RANK expression which is used to rank the
+connections. Each expression are represented as trees and manipulated using crossover and
+mutation operations.
+Koo et al.[3] propose a genetic algorithm based neighbor selection strategy which is
+incentive-compatible and suitable for real time deployment for peer to peer networks.
+Furthermore, the strategy proposed by this study has been compared with the existing
+strategy using two welfare metrics: system throughput and average downloading time. In [4],
+genetic algorithm is used to find the coarsest \emph{GridPeer} resources. Then, through the
+transformation the result of genetic algorithm into the pheromone of ant algorithm, more
+accurate resources have been discovered using the ant algorithm.
+The most difference between above works and our study is what role genetic algorithm can
+play in improving system design. While previous studies we mentioned in this section use the
+genetic algorithm as solution to search the optimal value for problems they define, we
+employed the genetic algorithm on the top of system observation. There is no intervention of
+the genetic algorithm over system components. The punishment of free riders is achieved by
+adding tit-for-tat behavior in our work.
+In practice, a variety of strategies have been proposed to treat free-riding problem. In [5], a
+Gnutella-like unstructured P2P network is proposed to employ free riders to serve as indexing
+nodes. Kamvar et al.[6] address free-riding problem via scoring system called as EigenTrust
+score which is used to measure the relative participation levels of peer in the system. Also,
+Dutta et al.[7] focus on tackling the free-rider with a distributed rating system. Their work
+provides two different approaches. In first approach, all users act as a jury to rate each other
+based on the service it receives from others and store its own result of ratings. In second
+approach, each user has a few designated supervisors and rating value is updated by
+supervisors.
+
+
 \section{Conclusion and Future works}\label{sec:concl}
 
 We have described the intention of free riders using genetic algorithm. Our key idea is
@@ -451,4 +506,4 @@ which simultaneously regards network and node as population.
 
 \end{document}
 
-
+]

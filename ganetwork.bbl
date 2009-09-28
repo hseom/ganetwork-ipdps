@@ -28,7 +28,7 @@
 
 \bibitem{gnutella}
 \BIBentryALTinterwordspacing
-``Gntella.'' [Online]. Available: \url{http://www.gnu.com}
+``Gntella.'' [Online]. Available: \url{http://gnutella.wego.com}
 \BIBentrySTDinterwordspacing
 
 \bibitem{bittorrent}
@@ -36,19 +36,26 @@
 ``Bittorrent.'' [Online]. Available: \url{http://bitconjurer.org/BitTorrent/}
 \BIBentrySTDinterwordspacing
 
-\bibitem{hd:belltoll}
-D.~Hughes, G.~Coulson, and J.~Walerdine, ``Free riding on gnetella revisited:
-  the bell tolls?'' \emph{IEEE Distributed Systems Online}, vol.~6, no.~6,
-  2005.
+\bibitem{journals/dsonline/HughesCW05}
+\BIBentryALTinterwordspacing
+D.~Hughes, G.~Coulson, and J.~Walkerdine, ``Free riding on gnutella revisited:
+  The bell tolls?'' \emph{IEEE Distributed Systems Online}, vol.~6, no.~6,
+  2005. [Online]. Available:
+  \url{http://doi.ieeecomputersociety.org/10.1109/MDSO.2005.31}
+\BIBentrySTDinterwordspacing
 
 \bibitem{tc:tragedy}
-------, ``Tragedy of the common,'' \emph{IEEE Distributed Systems Online},
-  vol.~6, no.~6, 2005.
+G.~Hardin, ``Tragedy of the common,'' \emph{Science}, vol. 162, 1968.
 
-\bibitem{ek:survey}
-E.~K. Lua, J.~crowcroft, M.~pias, R.~Sharma, and S.~lim, ``A survey and
-  comparison of peer to peer overlay network schemes,'' \emph{IEEE
-  Communication Surveys \& Tutorials}, vol.~7, no.~2, 2005.
+\bibitem{journals/comsur/LuaCPSL05}
+\BIBentryALTinterwordspacing
+E.~K. Lua, J.~Crowcroft, M.~Pias, R.~Sharma, and S.~Lim, ``A survey and
+  comparison of peer-to-peer overlay network schemes,'' \emph{IEEE
+  Communications Surveys and Tutorials}, vol.~7, no. 1-4, pp. 72--93, 2005.
+  [Online]. Available:
+  \url{http://dl.comsoc.org/cocoon/comsoc/servlets/OntologySearch?query=\&amp;%
+node=TOC1745\&amp;render=false\&amp;type=1}
+\BIBentrySTDinterwordspacing
 
 \bibitem{genetic}
 \BIBentryALTinterwordspacing
